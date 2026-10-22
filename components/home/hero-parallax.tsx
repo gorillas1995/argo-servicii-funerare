@@ -1,41 +1,60 @@
-'use client'
+"use client";
 
-import { m, useScroll, useTransform } from 'motion/react'
-import type { ReactNode } from 'react'
-import { useEffect, useState, useRef } from 'react'
+import { useRef, type ReactNode } from "react";
+import {
+  LazyMotion,
+  domAnimation,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "motion/react";
+import * as m from "motion/react-m";
 
-/**
- * Desktop-only parallax wrapper — shifts the hero image ~8% as the user scrolls.
- * Children render once (important for LCP); transform is a no-op on touch viewports.
- */
-export function HeroParallax({ children }: { children: ReactNode }) {
-  const ref = useRef<HTMLDivElement>(null)
-  const [enabled, setEnabled] = useState(false)
+type HeroParallaxProps = {
+  children: ReactNode;
+  /** Image travel in percent. Limited to 0–12 to keep the image covering the hero. */
+  strength?: number;
+};
 
-  // Enable parallax only on md+ pointer devices to avoid scroll jank on phones
-  useEffect(() => {
-    const mq = window.matchMedia('(min-width: 768px)')
-    const update = () => setEnabled(mq.matches)
-    update()
-    mq.addEventListener('change', update)
-    return () => mq.removeEventListener('change', update)
-  }, [])
+/** Scroll-linked image movement on mobile and desktop; the copy stays still. */
+export function HeroParallax({ children, strength = 10 }: HeroParallaxProps) {
+  const target = useRef<HTMLDivElement>(null);
+  const reduceMotion = useReducedMotion();
+  const travel = Number.isFinite(strength)
+    ? Math.min(12, Math.max(0, strength))
+    : 10;
 
   const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start start', 'end start'],
-  })
-  // Always create the transform; apply it only when desktop parallax is enabled
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '8%'])
+    target,
+    offset: ["start start", "end start"],
+  });
+
+  // Motion values update the transform without re-rendering React on every scroll.
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", `${travel}%`]);
 
   return (
-    <div ref={ref} className="absolute inset-0 overflow-hidden">
-      <m.div
-        style={enabled ? { y } : undefined}
-        className="absolute inset-0 will-change-transform"
+    <LazyMotion features={domAnimation}>
+      <div
+        ref={target}
+        style={{
+          position: "absolute",
+          inset: 0,
+          overflow: "hidden",
+          pointerEvents: "none",
+        }}
       >
-        {children}
-      </m.div>
-    </div>
-  )
+        <m.div
+          style={{
+            position: "absolute",
+            // Overscan leaves room above the image as it moves down while scrolling.
+            inset: "-18% 0 -8%",
+            y: reduceMotion ? 0 : y,
+            willChange: reduceMotion || travel === 0 ? "auto" : "transform",
+          }}
+        >
+          {children}
+        </m.div>
+      </div>
+    </LazyMotion>
+  );
 }

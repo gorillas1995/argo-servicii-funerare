@@ -15,7 +15,9 @@ import { StatsStrip } from '@/components/home/stats-strip'
 import { MotionProvider } from '@/components/motion/motion-provider'
 import { Reveal, Stagger, StaggerItem } from '@/components/motion/reveal'
 import { PackagesCarousel } from '@/components/packages-carousel'
+import { SupportingImage } from '@/components/supporting-image'
 import { buttonVariants } from '@/components/ui/button'
+import { HOME_SERVICES, SPRIJIN_1 } from '@/lib/stock-images'
 import { areas, phone, phoneHref, siteName, siteUrl } from '@/lib/site'
 import { cn } from '@/lib/utils'
 
@@ -80,29 +82,42 @@ export default function Home() {
         {/* Overlapping stats card */}
         <StatsStrip />
 
-        {/* Services — dotted pattern + spotlight cards */}
+        {/* Services — dotted pattern + spotlight cards + local supporting photo */}
         <section className="relative bg-background">
           <div className="pointer-events-none absolute inset-0 bg-pattern-dots" aria-hidden />
           <div className="relative container-site section-y pt-16 md:pt-20">
-            <Reveal>
-              <div className="max-w-2xl">
-                <h2 className="text-heading">Tot ce aveți nevoie, într-un singur loc</h2>
-                <p className="measure mt-5 text-body">
-                  Vă oferim liniștea de a ști că toate detaliile sunt în mâini sigure. De la preluare
-                  și transport la documente și organizarea ceremoniei.
-                </p>
+            <div className="grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-start lg:gap-14">
+              <div>
+                <Reveal>
+                  <div className="max-w-2xl">
+                    <h2 className="text-heading">Tot ce aveți nevoie, într-un singur loc</h2>
+                    <p className="measure mt-5 text-body">
+                      Vă oferim liniștea de a ști că toate detaliile sunt în mâini sigure. De la
+                      preluare și transport la documente și organizarea ceremoniei.
+                    </p>
+                  </div>
+                </Reveal>
+                <Stagger className="mt-10 grid gap-4 sm:grid-cols-2" stagger={0.1}>
+                  {services.map(({ title, text, Icon }) => (
+                    <StaggerItem key={title} as="div">
+                      {/* Icon rendered here so the Client Card receives SVG children, not a function prop */}
+                      <SpotlightCard title={title} text={text}>
+                        <Icon className="size-5" aria-hidden />
+                      </SpotlightCard>
+                    </StaggerItem>
+                  ))}
+                </Stagger>
               </div>
-            </Reveal>
-            <Stagger className="mt-10 grid gap-4 sm:grid-cols-2" stagger={0.1}>
-              {services.map(({ title, text, Icon }) => (
-                <StaggerItem key={title} as="div">
-                  {/* Icon rendered here so the Client Card receives SVG children, not a function prop */}
-                  <SpotlightCard title={title} text={text}>
-                    <Icon className="size-5" aria-hidden />
-                  </SpotlightCard>
-                </StaggerItem>
-              ))}
-            </Stagger>
+              <Reveal delay={0.12}>
+                <SupportingImage
+                  src={HOME_SERVICES.src}
+                  alt={HOME_SERVICES.alt}
+                  aspect={HOME_SERVICES.aspect}
+                  sizes="(max-width: 1024px) 100vw, 420px"
+                  className="lg:sticky lg:top-28"
+                />
+              </Reveal>
+            </div>
           </div>
         </section>
 
@@ -152,7 +167,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Why Argo — faint watermark + staggered facts */}
+        {/* Why Argo — faint watermark + supporting photo + staggered facts */}
         <section className="relative overflow-hidden bg-background">
           {/* Large decorative watermark */}
           <span
@@ -177,19 +192,29 @@ export default function Home() {
                 </Link>
               </div>
             </Reveal>
-            <Stagger className="flex flex-col" stagger={0.12}>
-              {facts.map((fact) => (
-                <StaggerItem
-                  key={fact}
-                  as="div"
-                  className="flex items-start gap-4 border-b border-border py-5 first:pt-0 last:border-0"
-                >
-                  {/* Gold marker that grows in with the stagger */}
-                  <span className="mt-2.5 h-px w-4 shrink-0 origin-left bg-accent" aria-hidden />
-                  <p className="text-title">{fact}</p>
-                </StaggerItem>
-              ))}
-            </Stagger>
+            <div className="flex flex-col gap-8">
+              <Reveal delay={0.08}>
+                <SupportingImage
+                  src={SPRIJIN_1.src}
+                  alt={SPRIJIN_1.alt}
+                  aspect={SPRIJIN_1.aspect}
+                  sizes="(max-width: 1024px) 100vw, 480px"
+                />
+              </Reveal>
+              <Stagger className="flex flex-col" stagger={0.12}>
+                {facts.map((fact) => (
+                  <StaggerItem
+                    key={fact}
+                    as="div"
+                    className="flex items-start gap-4 border-b border-border py-5 first:pt-0 last:border-0"
+                  >
+                    {/* Gold marker that grows in with the stagger */}
+                    <span className="mt-2.5 h-px w-4 shrink-0 origin-left bg-accent" aria-hidden />
+                    <p className="text-title">{fact}</p>
+                  </StaggerItem>
+                ))}
+              </Stagger>
+            </div>
           </div>
         </section>
 

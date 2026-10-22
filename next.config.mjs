@@ -3,9 +3,16 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  // Serve optimized AVIF/WebP variants for hero and package images
+  // Serve optimized AVIF/WebP variants for hero, packages, and stock photos
   images: {
     formats: ['image/avif', 'image/webp'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.pexels.com',
+        pathname: '/photos/**',
+      },
+    ],
   },
 }
 

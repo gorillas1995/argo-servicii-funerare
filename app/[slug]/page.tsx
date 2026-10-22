@@ -3,8 +3,8 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ArrowRight } from 'lucide-react'
 import { PageJsonLd } from '@/components/json-ld'
-import { PackagesList } from '@/components/packages-carousel'
 import { PageShell } from '@/components/page-shell'
+import { PricesShowcase } from '@/components/prices-showcase'
 import { allSlugs, getPage } from '@/lib/pages'
 import { areas, siteName, siteUrl } from '@/lib/site'
 
@@ -56,25 +56,14 @@ export default async function DetailPage({ params }: { params: Promise<{ slug: s
   return (
     <main className="min-h-screen bg-background text-ink">
       <PageJsonLd page={page} />
-      <PageShell page={page}>
-        {isPrices && <PackagesBlock />}
+      <PageShell
+        page={page}
+        // Packages lead the prices page — support copy stays below in the article
+        lead={isPrices ? <PricesShowcase /> : undefined}
+      >
         {isContact && <ContactAreasBlock />}
       </PageShell>
     </main>
-  )
-}
-
-/** Full package catalog on Prețuri — vertical grid for SEO crawlability. */
-function PackagesBlock() {
-  return (
-    <div className="mt-14">
-      <h2 className="text-heading">Pachetele noastre funerare</h2>
-      <p className="measure mt-4 text-body">
-        Pachete complete cu talonul de pensie — înhumare și incinerare. Apăsați „Vedeți mai mult”
-        pentru lista completă de servicii și produse. Pentru ofertă personalizată, sunați non-stop.
-      </p>
-      <PackagesList />
-    </div>
   )
 }
 
