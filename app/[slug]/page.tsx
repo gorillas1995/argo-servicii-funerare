@@ -2,9 +2,11 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ArrowRight } from 'lucide-react'
-import { PageJsonLd } from '@/components/json-ld'
+import { LocationJsonLd, PageJsonLd } from '@/components/json-ld'
+import { LocationNapBlock } from '@/components/location-nap'
 import { PageShell } from '@/components/page-shell'
 import { PricesShowcase } from '@/components/prices-showcase'
+import { getLocationBySlug } from '@/lib/locations'
 import { allSlugs, getPage } from '@/lib/pages'
 import { areas, siteName, siteUrl } from '@/lib/site'
 
@@ -52,10 +54,13 @@ export default async function DetailPage({ params }: { params: Promise<{ slug: s
 
   const isPrices = slug === 'preturi-servicii-funerare-bucuresti'
   const isContact = slug === 'firma-pompe-funebre'
+  /** Sector / Ilfov pages get a dedicated FuneralHome schema + NAP map block. */
+  const location = getLocationBySlug(slug)
 
   return (
     <main className="min-h-screen bg-background text-ink">
       <PageJsonLd page={page} />
+      {location && <LocationJsonLd location={location} />}
       <PageShell
         page={page}
         // Packages lead the prices page — support copy stays below in the article
@@ -63,6 +68,7 @@ export default async function DetailPage({ params }: { params: Promise<{ slug: s
       >
         {isContact && <ContactAreasBlock />}
       </PageShell>
+      {location && <LocationNapBlock location={location} />}
     </main>
   )
 }

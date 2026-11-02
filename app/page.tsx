@@ -12,11 +12,14 @@ import { Hero } from '@/components/home/hero'
 import { ProcessSteps } from '@/components/home/process-steps'
 import { SpotlightCard } from '@/components/home/spotlight-card'
 import { StatsStrip } from '@/components/home/stats-strip'
+import { LocationJsonLd } from '@/components/json-ld'
+import { LocationNapBlock } from '@/components/location-nap'
 import { MotionProvider } from '@/components/motion/motion-provider'
 import { Reveal, Stagger, StaggerItem } from '@/components/motion/reveal'
 import { PackagesCarousel } from '@/components/packages-carousel'
 import { SupportingImage } from '@/components/supporting-image'
 import { buttonVariants } from '@/components/ui/button'
+import { getHomeLocation } from '@/lib/locations'
 import { HOME_SERVICES, SPRIJIN_1 } from '@/lib/stock-images'
 import { areas, phone, phoneHref, siteName, siteUrl } from '@/lib/site'
 import { cn } from '@/lib/utils'
@@ -39,6 +42,9 @@ export const metadata: Metadata = {
     type: 'website',
   },
 }
+
+/** Homepage physical location for schema.org + NAP map block. */
+const homeLocation = getHomeLocation()
 
 /** Concise service rows — titles and copy from existing homepage claims. */
 const services = [
@@ -76,6 +82,9 @@ export default function Home() {
   return (
     <MotionProvider>
       <main className="min-h-screen bg-background text-ink">
+        {/* Local FuneralHome schema for the index address */}
+        <LocationJsonLd location={homeLocation} />
+
         {/* Full-bleed art-directed hero */}
         <Hero />
 
@@ -289,6 +298,9 @@ export default function Home() {
             </Reveal>
           </div>
         </section>
+
+        {/* NAP + map for the primary București location */}
+        <LocationNapBlock location={homeLocation} />
       </main>
     </MotionProvider>
   )

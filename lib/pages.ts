@@ -800,7 +800,7 @@ export const pages: Record<string, PageContent> = {
     isSector: true,
     h1: "Servicii funerare Sector 2 București — asistență non-stop",
     intro:
-      "Agenția Funerară Argo oferă servicii funerare complete non-stop în Sectorul 2 din București. Consiliere, documente, transport funerar și depunere la capelă. Telefon: 0785.165.165.",
+      "Pierderea unei persoane dragi este un moment în care familia are nevoie de liniște, nu de griji administrative. În Sectorul 2, Agenția Funerară Argo preia organizarea procesiunii funerare — de la acte și transport până la depunerea la capelă — cu respect, discreție și transparență deplină.",
     image: CEREMONIE_1.src,
     imageAlt: CEREMONIE_1.alt,
     imageAspect: CEREMONIE_1.aspect,
@@ -856,7 +856,7 @@ export const pages: Record<string, PageContent> = {
     isSector: true,
     h1: "Servicii funerare Sector 3 București — asistență non-stop",
     intro:
-      "Agenția Funerară Argo oferă servicii funerare complete non-stop în Sectorul 3 din București. Consiliere, documente, transport funerar și depunere la capelă. Telefon: 0785.165.165.",
+      "Când pierdeți pe cineva drag, ultimele lucruri de care aveți nevoie sunt drumurile și formalitățile. În Sectorul 3 suntem alături de familie non-stop: preluăm responsabilitatea organizării înmormântării sau incinerării, cu sprijin calm, respect și costuri comunicate clar.",
     image: ACTE_1.src,
     imageAlt: ACTE_1.alt,
     imageAspect: ACTE_1.aspect,
@@ -911,7 +911,7 @@ export const pages: Record<string, PageContent> = {
     isSector: true,
     h1: "Servicii funerare Sector 4 București — asistență non-stop",
     intro:
-      "Agenția Funerară Argo oferă servicii funerare complete non-stop în Sectorul 4 din București. Consiliere, documente, transport funerar și depunere la capelă. Telefon: 0785.165.165.",
+      "Pierderea unei persoane dragi lasă familia fără răgaz. În Sectorul 4, Agenția Funerară Argo se ocupă de întreaga organizare a procesiunii funerare — documente, preluare, transport și capelă — ca dumneavoastră să puteți fi alături de cei apropiați, cu încredere și transparență.",
     image: SPRIJIN_1.src,
     imageAlt: SPRIJIN_1.alt,
     imageAspect: SPRIJIN_1.aspect,
@@ -966,7 +966,7 @@ export const pages: Record<string, PageContent> = {
     isSector: true,
     h1: "Servicii funerare Sector 5 București — asistență non-stop",
     intro:
-      "Agenția Funerară Argo oferă servicii funerare complete non-stop în Sectorul 5 din București. Consiliere, documente, transport funerar și depunere la capelă. Telefon: 0785.165.165.",
+      "În clipele grele ale unei pierderi, contează să aveți pe cineva care să ducă mai departe ceea ce trebuie făcut. În Sectorul 5 preluăm organizarea completă a serviciilor funerare, cu respect pentru tradiție, discreție față de familie și transparență asupra fiecărui pas.",
     image: CEREMONIE_2.src,
     imageAlt: CEREMONIE_2.alt,
     imageAspect: CEREMONIE_2.aspect,
@@ -1021,7 +1021,7 @@ export const pages: Record<string, PageContent> = {
     isSector: true,
     h1: "Servicii funerare Sector 6 București — asistență non-stop",
     intro:
-      "Agenția Funerară Argo oferă servicii funerare complete non-stop în Sectorul 6 din București. Consiliere, documente, transport funerar și depunere la capelă. Telefon: 0785.165.165.",
+      "Pierderea unei persoane dragi cere timp pentru familie, nu pentru birocrație. În Sectorul 6 intervenim non-stop și preluăm responsabilitatea procesiunii funerare — de la constatare și acte până la cimitir — cu sprijin, respect și claritate deplină.",
     image: FLORI_1.src,
     imageAlt: FLORI_1.alt,
     imageAspect: FLORI_1.aspect,
@@ -1076,7 +1076,7 @@ export const pages: Record<string, PageContent> = {
     isSector: true,
     h1: "Servicii funerare județul Ilfov — asistență non-stop",
     intro:
-      "Agenția Funerară Argo, înființată în 1992, oferă servicii funerare complete în toate localitățile județului Ilfov, cu peste 30 de ani de experiență. Dispecerat non-stop: 0785.165.165.",
+      "Pierderea unei persoane dragi este la fel de grea, oriunde ar locui familia. În județul Ilfov, Agenția Funerară Argo ajunge în localitatea dumneavoastră și preia organizarea procesiunii funerare, cu același respect, sprijin și transparență ca în București.",
     image: SPRIJIN_2.src,
     imageAlt: SPRIJIN_2.alt,
     imageAspect: SPRIJIN_2.aspect,

@@ -1,7 +1,7 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Lora, Source_Sans_3 } from 'next/font/google'
-import { LocalBusinessJsonLd } from '@/components/json-ld'
+import { OrganizationJsonLd } from '@/components/json-ld'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 import { StickyCall } from '@/components/sticky-call'
@@ -55,7 +55,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="ro" data-scroll-behavior="smooth" className={`${sourceSans.variable} ${lora.variable}`}>
       <body className="font-sans antialiased">
-        <LocalBusinessJsonLd />
+        <OrganizationJsonLd />
         <SiteHeader />
         {children}
         <SiteFooter />
