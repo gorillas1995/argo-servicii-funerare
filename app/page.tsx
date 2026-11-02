@@ -32,6 +32,10 @@ export const metadata: Metadata = {
   description:
     'Pachete funerare complete cu talonul de pensie în București și Ilfov. Prețuri transparente, înhumare și incinerare. Asistență non-stop la ☎️ 0785.165.165.',
   alternates: { canonical: siteUrl },
+  // Google Search Console ownership verification meta tag.
+  verification: {
+    google: 'moteBK-4JSfx-K1aYRBo_nt9S84XCz0e3tt36KR5FhY',
+  },
   openGraph: {
     title: 'Preturi Servicii Funerare | Pompe Funebre Bucuresti | 0785.165.165 Non Stop',
     description:
