@@ -42,6 +42,10 @@ export const metadata: Metadata = {
     type: 'website',
   },
   robots: { index: true, follow: true },
+  // Google Search Console ownership verification meta tag.
+  verification: {
+    google: 'moteBK-4JSfx-K1aYRBo_nt9S84XCz0e3tt36KR5FhY',
+  },
 }
 
 export const viewport: Viewport = {
